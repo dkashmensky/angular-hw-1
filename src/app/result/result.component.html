@@ -1,0 +1,7 @@
+<div>
+  Congrats, {{ username }}! Your score is {{ result }}
+  Wanna play again?
+  <button (click)="reset()">Play again</button>
+  <button (click)="toggleScores()">Highscores</button>
+  <div [innerHTML]="getHighscores()" *ngIf="showScores"></div>
+</div>
