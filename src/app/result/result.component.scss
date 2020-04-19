@@ -1,0 +1,91 @@
+@import '../../variables.scss';
+
+.wrapper {
+  &__block {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.finish {
+  &__text {
+    text-align: center;
+
+    div {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.button {
+  border: none;
+  padding: 5px 0;
+  transition: 0.3s;
+  width: 200px;
+
+  &--again {
+    background-color: $lightgreen;
+    color: $black;
+  }
+
+  &--scores {
+    background-color: $red;
+    color: $black;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+  }
+}
+
+.text {
+  &--green {
+    color: $lightgreen;
+  }
+
+  &--red {
+    color: $red;
+  }
+}
+
+.highscores {
+  align-items: center;
+  background-color: $black;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  position: absolute;
+
+  &__table td,
+  &__table th {
+    padding: 10px;
+    text-align: center;
+    vertical-align: center;
+  }
+
+  &__table th {
+    border-bottom: 2px solid $white;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}

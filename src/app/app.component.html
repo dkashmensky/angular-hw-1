@@ -1,41 +1,50 @@
-<div *ngIf="!finalResult">
-  <div *ngIf="!username">
-    <div>Hello, Stranger. Let's play a little. Give me your name:</div>
-    <div>
-      <input type="text" [value]="username" (change)="setUsername($event)" />
-    </div>
-  </div>
-  <div *ngIf="username">
-    <div>
-      Howdy, {{ username }}. Press the big one below to start.
-    </div>
-    <div>
-      <button *ngIf="!gameInProgress" (click)="startGame()">START</button>
-      <button *ngIf="gameInProgress" (click)="incrementClicks()">CLICK!</button>
-    </div>
-    <div *ngIf="gameInProgress">
-      Time left: {{ timer }}
-    </div>
-    <div *ngIf="gameInProgress">
-      Clicked times: {{ clicks }}
-    </div>
-    <div *ngIf="!gameInProgress">
-      <select [value]="timer" (change)="setTimer($event)">
-        <option 
-          *ngFor="let timeOption of timerOptions" 
-          value="{{ timeOption }}">
-          {{ timeOption }}
-        </option>
-      </select>
-    </div>
-  </div>
-</div>
+<div class="wrapper">
+  <div class="game wrapper__block" *ngIf="!finalResult">
 
-<app-result 
-  *ngIf="finalResult" 
-  [username]="username" 
-  [result]="finalResult" 
-  (voidResult)="resetResult()">
-</app-result>
+    <div class="game__welcome welcome" *ngIf="!username">
+      <div class="welcome__text">Hello, Stranger. Let's play a little.</div>
+      <div class="welcome__namequery">
+        Give me your name:
+        <input class="welcome__input" type="text" spellcheck="false" [value]="username" (change)="setUsername($event)" />
+      </div>
+    </div>
+
+    <div class="game__start start" *ngIf="username">
+      <div class="start__text" *ngIf="!gameInProgress">
+        <div>Howdy, <span class="text--green">{{ username }}</span>.</div>
+        <div>Press the big button below to start.</div>
+      </div>
+      <div class="start__timer" *ngIf="gameInProgress">
+        Time left: <span class="text--red">{{ timer }}</span>
+      </div>
+      <div class="start__buttons">
+        <button class="start__button button button--start" *ngIf="!gameInProgress" (click)="startGame()">DO IT!</button>
+        <button class="start__button button button--clicker" *ngIf="gameInProgress" (click)="incrementClicks()">SMASH!</button>
+      </div>
+      <div class="start__counter" *ngIf="gameInProgress">
+        Clicked times: <span class="text--green">{{ clicks }}</span>
+      </div>
+      <div class="start__settings" *ngIf="!gameInProgress">
+        Select the timer: 
+        <select class="selector" [value]="timer" (change)="setTimer($event)">
+          <option 
+            *ngFor="let timeOption of timerOptions" 
+            value="{{ timeOption }}">
+            {{ timeOption }}
+          </option>
+        </select>
+        seconds
+      </div>
+    </div>
+
+  </div>
+
+  <app-result 
+    *ngIf="finalResult"
+    [username]="username"
+    [result]="finalResult"
+    (voidResult)="resetResult()">
+  </app-result>
+</div>
 
 <router-outlet></router-outlet>

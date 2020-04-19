@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import './reset.css';
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 body {
-  background-color: #36454f;
+  background-color: $black;
+  color: $white;
+  font-family: 'Open Sans', sans-serif;
 }

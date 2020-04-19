@@ -1,7 +1,21 @@
-<div>
-  Congrats, {{ username }}! Your score is {{ result }}
-  Wanna play again?
-  <button (click)="reset()">Play again</button>
-  <button (click)="toggleScores()">Highscores</button>
-  <div [innerHTML]="getHighscores()" *ngIf="showScores"></div>
+<div class="finish wrapper__block">
+  <div class="finish__text">
+    <div class="finish__text-score">
+      Congrats, <span class="text--green">{{ username }}</span>! 
+      Your score is <span class="text--red">{{ result }}</span>
+    </div>
+    <div class="finish__text-again">Wanna play again?</div>
+  </div>
+  <div class="finish__buttons">
+    <button class="button button--again" (click)="reset()">Play again</button>
+    <button class="button button--scores" (click)="toggleScores()">Highscores</button>
+  </div>
+  
+  <div class="highscores" *ngIf="showScores">
+    <div class="highscores__content" [innerHTML]="getHighscores()"></div>
+    <div class="highscores__button">
+      <button class="button button--scores" (click)="toggleScores()">Close</button>
+    </div>
+  </div>
+  
 </div>
