@@ -12,7 +12,7 @@
   </div>
   
   <div class="highscores" *ngIf="showScores">
-    <div class="highscores__content" [innerHTML]="getHighscores()"></div>
+    <div class="highscores__content" [innerHTML]="highscores"></div>
     <div class="highscores__button">
       <button class="button button--scores" (click)="toggleScores()">Close</button>
     </div>

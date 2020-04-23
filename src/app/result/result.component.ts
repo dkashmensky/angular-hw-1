@@ -1,4 +1,7 @@
 import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { ResultService } from '../services/result.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-result',
@@ -7,56 +10,21 @@ import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angu
   encapsulation: ViewEncapsulation.None
 })
 export class ResultComponent {
-  @Input() username: string;
-  @Input() result: number;
+  constructor(private dataService: DataService,
+              private resultService: ResultService,
+              private router: Router) { }
 
-  @Output() voidResult = new EventEmitter<boolean>();
-
+  username = this.dataService.getData();
+  result = this.dataService.getResult();
   showScores = false;
+  highscores = this.resultService.getHighscores();
 
   reset() {
-    this.voidResult.emit(true);
+    this.dataService.removeResult();
+    this.router.navigate(['/game']);
   }
 
   toggleScores() {
     this.showScores = !this.showScores;
-  }
-
-  getHighscores() {
-    const scores = localStorage.getItem('scores');
-    if (!scores) {
-      return 'No highscores found!';
-    }
-
-    const highscores = JSON.parse(scores)
-      .sort((a, b) => b.score / b.timer - a.score / a.timer)
-      .slice(0, 10)
-      .map((item) => {
-        return `
-        <tr>
-          <td>${item.user}</td>
-          <td>${item.score}</td>
-          <td>${item.timer}</td>
-          <td>${Math.round((item.score / item.timer) * 100) / 100}</td>
-        </tr>
-        `;
-      })
-      .join('');
-
-    return `
-    <table class="highscores__table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Score</th>
-          <th>Game timer</th>
-          <th>Clicks per second</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${highscores}
-      </tbody>
-    </table>
-    `;
   }
 }

@@ -1,0 +1,106 @@
+@import '../../variables.scss';
+
+.wrapper {
+  font-size: $normaltext;
+  width: 100%;
+
+  &__block {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.game {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__text {
+    text-align: center;
+  }
+
+  &__text div,
+  &__buttons,
+  &__timer {
+    margin-bottom: 20px;
+  }
+}
+
+.quit {
+  color: $red;
+  font-weight: bold;
+  padding: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.5s;
+}
+
+.quit:hover {
+  cursor: pointer;
+  font-size: calc(#{$normaltext} + 3px);
+  transition: 0.5s;
+}
+
+.text {
+  &--green {
+    color: $lightgreen;
+  }
+
+  &--red {
+    color: $red;
+  }
+}
+
+.button {
+  border: none;
+  border-radius: 50%;
+  font-family: 'Open Sans', sans-serif;
+  height: 250px;
+  transition: 0.3s;
+  width: 250px;
+  
+  &--start {
+    background-color: $lightgreen;
+  }
+
+  &--clicker {
+    background-color: $red;
+    color: $white;
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transition: 0.3s;
+  }
+}
+
+.selector {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid $white;
+  color: $white;
+  transition: 0.2s;
+
+  &:hover {
+    border-color: $lightgreen;
+    color: $lightgreen;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  option {
+    background-color: $black;
+    border: none;
+    color: $white;
+
+    &:hover {
+      box-shadow: 0 0 10px 100px #1882A8 inset;
+    }
+  }
+}

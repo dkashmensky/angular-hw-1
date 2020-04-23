@@ -1,0 +1,53 @@
+@import '../../variables.scss';
+
+.wrapper {
+  font-size: $normaltext;
+  width: 100%;
+
+  &__block {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+}
+
+.login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__text,
+  &__namequery {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__namequery {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid $white;
+    color: $white;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
+    padding: 5px 0px;
+    text-align: center;
+    transition: 0.5s;
+    width: 80%;
+  }
+
+  &__input:focus {
+    border-color: $lightgreen;
+    color: $lightgreen;
+    transition: 0.5s;
+  }
+}

@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="game wrapper__block">
+
+    <div class="game__text" *ngIf="!gameInProgress">
+      <div>Howdy, <span class="text--green">{{ username }}</span>.</div>
+      <div>Press the big button below to start.</div>
+    </div>
+    <div class="game__timer" *ngIf="gameInProgress">
+      Time left: <span class="text--red">{{ timerCount }}</span>
+    </div>
+    <div class="game__buttons">
+      <button class="game__button button button--start" *ngIf="!gameInProgress" (click)="startGame()">DO IT!</button>
+      <button class="game__button button button--clicker" *ngIf="gameInProgress" (click)="incrementClicks()">SMASH!</button>
+    </div>
+    <div class="game__counter" *ngIf="gameInProgress">
+      Clicked times: <span class="text--green">{{ clicks }}</span>
+    </div>
+    <div class="game__settings" *ngIf="!gameInProgress">
+      Select the timer: 
+      <select class="selector" [value]="timerCount" (change)="setTimer($event)">
+        <option 
+          *ngFor="let timeOption of timerOptions" 
+          value="{{ timeOption }}">
+          {{ timeOption }}
+        </option>
+      </select>
+      seconds
+    </div>
+
+  </div>
+
+  <div class="quit" (click)="quit()">
+    QUIT
+  </div>
+</div>
